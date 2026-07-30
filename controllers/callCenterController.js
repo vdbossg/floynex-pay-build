@@ -194,7 +194,7 @@ exports.handleServiceSelection = async (req, res, next) => {
       return res.send(`<?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Say>${queuePrompt}</Say>
-    <Play url="https://api.floynexapp.com/assets/audio/hold_music.mp3"/>
+    <Play url="https://api.msafeapp.com/assets/audio/hold_music.mp3"/>
     <Redirect>${req.protocol}://${req.get('host')}/api/callcenter/queue-check</Redirect>
 </Response>`);
     }
@@ -261,7 +261,7 @@ exports.handleQueueCheck = async (req, res, next) => {
     return res.send(`<?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Say>${queuePrompt}</Say>
-    <Play url="https://api.floynexapp.com/assets/audio/hold_music.mp3"/>
+    <Play url="https://api.msafeapp.com/assets/audio/hold_music.mp3"/>
     <Redirect>${req.protocol}://${req.get('host')}/api/callcenter/queue-check</Redirect>
 </Response>`);
   } catch (error) {

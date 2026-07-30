@@ -8,7 +8,7 @@ const axios = require("axios");
 
 async function loadLogo() {
   try {
-    const logoUrl = "https://floynexapp.com/logo.png";
+    const logoUrl = "https://msafeapp.com/logo.png";
 
     const response = await axios.get(logoUrl, {
       responseType: "arraybuffer"

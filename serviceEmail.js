@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
 
 async function sendResetEmail(to, token) {
   //const resetLink = `${process.env.FRONTEND_URL}/reset-password.html?token=${token}`;
-  const resetLink = `https://floynexapp.com/reset-password.html?token=${token}`;
+  const resetLink = `https://msafeapp.com/reset-password.html?token=${token}`;
 
   const mailOptions = {
     from: `"FLOYNEX PAY" <${process.env.EMAIL_USER}>`,
@@ -30,7 +30,7 @@ async function sendResetEmail(to, token) {
       <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px; text-align:center;">
 
-          <img src="https://floynexapp.com/logo.png" 
+          <img src="https://msafeapp.com/logo.png" 
      alt="FLOYNEX PAY Logo" 
      style="margin-bottom:20px; width:120px;" />
 
@@ -156,7 +156,7 @@ async function sendSupportReplyEmail(to, name, ticketId, userMessage, reply) {
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
           <div style="text-align:center;">
-            <img src="https://floynexapp.com/logo.png" 
+            <img src="https://msafeapp.com/logo.png" 
                  style="width:120px; margin-bottom:20px;" />
           </div>
 
@@ -208,7 +208,7 @@ async function sendKycApprovedEmail(to, name) {
   <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
     <div style="text-align:center;">
-      <img src="https://floynexapp.com/logo.png" 
+      <img src="https://msafeapp.com/logo.png" 
            style="width:120px; margin-bottom:20px;" />
     </div>
 
@@ -255,7 +255,7 @@ async function sendKycRejectedEmail(to, name, reason) {
   <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
     <div style="text-align:center;">
-      <img src="https://floynexapp.com/logo.png" style="width:120px;" />
+      <img src="https://msafeapp.com/logo.png" style="width:120px;" />
     </div>
 
     <h2 style="color:#c62828; text-align:center;">KYC Rejected ❌</h2>
@@ -298,7 +298,7 @@ async function sendWalletFrozenEmail(to, name, reason) {
   <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
     <div style="text-align:center;">
-      <img src="https://floynexapp.com/logo.png" style="width:120px;" />
+      <img src="https://msafeapp.com/logo.png" style="width:120px;" />
     </div>
 
     <h2 style="color:#ef6c00; text-align:center;">Account Frozen ⚠️</h2>
@@ -339,7 +339,7 @@ async function sendWalletActivatedEmail(to, name) {
   <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
     <div style="text-align:center;">
-      <img src="https://floynexapp.com/logo.png" style="width:120px;" />
+      <img src="https://msafeapp.com/logo.png" style="width:120px;" />
     </div>
 
     <h2 style="color:#2e7d32; text-align:center;">Account Activated 🟢</h2>
@@ -374,7 +374,7 @@ async function sendOtpEmail(to, name, otp) {
 <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
   <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px; text-align:center;">
 
-    <img src="https://floynexapp.com/logo.png" 
+    <img src="https://msafeapp.com/logo.png" 
          style="width:120px; margin-bottom:20px;" />
 
     <h2 style="color:#2e7d32;">Security Verification 🔐</h2>
@@ -412,7 +412,7 @@ async function sendPinChangedEmail(to, name) {
 <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
   <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px; text-align:center;">
 
-    <img src="https://floynexapp.com/logo.png" style="width:120px;" />
+    <img src="https://msafeapp.com/logo.png" style="width:120px;" />
 
     <h2 style="color:#2e7d32;">PIN Updated Successfully ✅</h2>
 
@@ -448,7 +448,7 @@ async function sendTestStatementEmail(to, name, startDate, endDate) {
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
           <div style="text-align:center; margin-bottom:20px;">
-            <img src="https://floynexapp.com/logo.png" alt="FLOYNEX PAY Logo" style="width:120px;" />
+            <img src="https://msafeapp.com/logo.png" alt="FLOYNEX PAY Logo" style="width:120px;" />
           </div>
 
           <h2 style="color:#2e7d32; text-align:center;">Withdrawal Statement Preview</h2>
@@ -497,7 +497,7 @@ async function sendWithdrawalStatementEmail(to, wallet, withdrawals, startDate, 
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
           <div style="text-align:center; margin-bottom:20px;">
-            <img src="https://floynexapp.com/logo.png" style="width:120px;" />
+            <img src="https://msafeapp.com/logo.png" style="width:120px;" />
           </div>
 
           <h2 style="color:#2e7d32; text-align:center;">
@@ -563,7 +563,7 @@ console.log(formatted);
     <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
       <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
         <div style="text-align:center; margin-bottom:20px;">
-          <img src="https://floynexapp.com/logo.png" alt="FLOYNEX PAY Logo" style="width:120px;" />
+          <img src="https://msafeapp.com/logo.png" alt="FLOYNEX PAY Logo" style="width:120px;" />
         </div>
 
         <h2 style="color:#2e7d32; text-align:center;">Sent/Received Statement</h2>
@@ -626,7 +626,7 @@ const pdfPath = await generateTransactionPDF(
       <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px; text-align:center;">
 
-          <img src="https://floynexapp.com/logo.png" style="width:120px; margin-bottom:20px;" />
+          <img src="https://msafeapp.com/logo.png" style="width:120px; margin-bottom:20px;" />
 
           <h2 style="color:#2e7d32;">Request Statement ✅</h2>
 
@@ -682,7 +682,7 @@ async function sendAffiliateRegistrationEmail(to, fullName, promoCode) {
 <div style="max-width:600px;margin:auto;background:#fff;padding:30px;border-radius:8px;">
 
 <div style="text-align:center;">
-<img src="https://floynexapp.com/logo.png"
+<img src="https://msafeapp.com/logo.png"
 style="width:120px;margin-bottom:20px;">
 </div>
 
@@ -741,7 +741,7 @@ async function sendAffiliateApprovedEmail(to, fullName, promoCode) {
 <div style="max-width:600px;margin:auto;background:#fff;padding:30px;border-radius:8px;">
 
 <div style="text-align:center;">
-<img src="https://floynexapp.com/logo.png"
+<img src="https://msafeapp.com/logo.png"
 style="width:120px;margin-bottom:20px;">
 </div>
 
@@ -802,7 +802,7 @@ async function sendAccountDeletionEmail(to, name, code) {
     html: `
       <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px; text-align:center;">
-          <img src="https://floynexapp.com/logo.png" style="width:120px; margin-bottom:20px;" />
+          <img src="https://msafeapp.com/logo.png" style="width:120px; margin-bottom:20px;" />
           <h2 style="color:#c62828;">Account Deletion Request ⚠️</h2>
           <p>Hello <strong>${name || "Customer"}</strong>,</p>
           <p>We received a request to permanently delete your FLOYNEX PAY account. Use the secure confirmation code below to proceed:</p>
@@ -827,7 +827,7 @@ async function sendJobApplicationConfirmationEmail(to, name, ticketId, jobTitle,
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
 
           <div style="text-align:center;">
-            <img src="https://floynexapp.com/logo.png" 
+            <img src="https://msafeapp.com/logo.png" 
                  alt="FLOYNEX PAY Logo" 
                  style="width:120px; margin-bottom:20px;" />
           </div>
