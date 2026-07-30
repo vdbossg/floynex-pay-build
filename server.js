@@ -46,6 +46,7 @@ const withdrawAuditLogsRoutes = require(
 const jobRoutes = require("./routes/jobRoutes");
 const agentKycRoutes =
 require("./routes/routesAgentKyc");
+const approveAgentKycRoutes = require("./routes/routesApproveAgentKycs");
 // 1️⃣ Initialize express app FIRST
 const app = express();
 app.set("trust proxy", true);
@@ -139,6 +140,7 @@ agentKycRoutes
 );
 app.use("/api/withdraw-usdt", withdrawUSDT);
 app.use("/api/marketer", affiliatesRoutes);
+app.use("/api/approve-agent-kyc", approveAgentKycRoutes);
 //app.use("/api", paymentCallbackRoutes);
 // ✅ Mount profile photo routes
 app.use("/api/user", require("./routes/photoUser"));
