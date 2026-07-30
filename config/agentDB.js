@@ -1,11 +1,8 @@
+//C:\Users\LENOVO\Desktop\FLOYNEXBUILD\backend\config\agentDB.js
 const mongoose = require("mongoose");
-
-
 const agentDB = mongoose.createConnection(
 process.env.AGENT_MONGO_URI
 );
-
-
 agentDB.on(
 "connected",
 ()=>{
@@ -13,7 +10,6 @@ agentDB.on(
  "✅ FLOYNEX AGENT DB Connected"
  );
 });
-
 
 agentDB.on(
 "error",
@@ -23,6 +19,5 @@ agentDB.on(
  err
  );
 });
-
 
 module.exports=agentDB;
