@@ -44,6 +44,8 @@ const withdrawAuditLogsRoutes = require(
   "./routes/routeswithdrawauditlogs"
 );
 const jobRoutes = require("./routes/jobRoutes");
+const agentKycRoutes =
+require("./routes/routesAgentKyc");
 // 1️⃣ Initialize express app FIRST
 const app = express();
 app.set("trust proxy", true);
@@ -130,6 +132,10 @@ app.use("/api/jobs", jobRoutes); // ◄ MOUNT JOB ROUTES HERE
 app.use(
   "/api/admin-notifications",
   require("./routes/routesAdminNotifications")
+);
+app.use(
+"/api/agent-kyc",
+agentKycRoutes
 );
 app.use("/api/withdraw-usdt", withdrawUSDT);
 app.use("/api/marketer", affiliatesRoutes);
