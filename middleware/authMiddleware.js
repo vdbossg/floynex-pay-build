@@ -1,10 +1,10 @@
-//FLOYNEX PAY\backend\middleware\authMiddleware.js
-
+//C:\Users\LENOVO\Desktop\FLOYNEXBUILD\backend\middleware\authMiddleware.js
 const jwt = require("jsonwebtoken");
-const User = require("../models/User"); // ✅ Imported the User Model
+const User = require("../models/User");
 const MpayStaff = require("../models/MpayStaffsAdmins");
+const AgentAccount = require("../models/AgentAccount");
 
-module.exports = async (req, res, next) => { // ✅ Added async here
+module.exports = async (req, res, next) => {
   try {
     const token = req.header("Authorization")?.replace("Bearer ", "");
 
@@ -14,40 +14,49 @@ module.exports = async (req, res, next) => { // ✅ Added async here
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // ✅ Fetch full user details from DB (including lastName)
+    // 1. Check Standard User
     const userProfile = await User.findById(decoded.id).select("firstName lastName businessName");
-    
-       // If the user profile isn't in the standard User model, check the staff model before failing
-    if (!userProfile) {
-      const staffProfile = await MpayStaff.findById(decoded.id);
 
-      if (!staffProfile) {
-        return res.status(401).json({ error: "User profile not found" });
-      }
+    if (userProfile) {
+      const fullName = `${userProfile.firstName} ${userProfile.lastName}`.trim();
+      req.user = {
+        ...decoded,
+        fullName: fullName,
+        businessName: userProfile.businessName,
+        accountType: "user"
+      };
+      return next();
+    }
 
-      // Format names specifically for staff using staff schema properties
+    // 2. Check Staff / Admin
+    const staffProfile = await MpayStaff.findById(decoded.id);
+    if (staffProfile) {
       const staffName = `${staffProfile.first_name || ""} ${staffProfile.last_name || ""} ${staffProfile.sir_name || ""}`.trim();
-
       req.user = {
         ...decoded,
         fullName: staffName,
-        businessName: `M-Pay Admin (${staffProfile.role || "Staff"})`
+        businessName: `M-Pay Admin (${staffProfile.role || "Staff"})`,
+        accountType: "staff"
       };
-
-      return next(); // Exit cleanly out of the middleware for staff
+      return next();
     }
 
+    // 3. Check Agent Account
+    const agentProfile = await AgentAccount.findById(decoded.id);
+    if (agentProfile) {
+      const agentName = `${agentProfile.firstName} ${agentProfile.lastName}`.trim();
+      req.user = {
+        ...decoded,
+        fullName: agentName,
+        agentCode: agentProfile.agentCode,
+        agentShopNumber: agentProfile.agentShopNumber,
+        agentAccountNumber: agentProfile.agentAccountNumber,
+        accountType: "agent"
+      };
+      return next();
+    }
 
-    // Combine both names into a single clean string
-    const fullName = `${userProfile.firstName} ${userProfile.lastName}`.trim();
-
-    req.user = {
-      ...decoded,
-      fullName: fullName,
-      businessName: userProfile.businessName
-    };
-
-    next();
+    return res.status(401).json({ error: "User or Agent profile not found" });
   } catch (error) {
     res.status(401).json({ error: "Invalid token" });
   }

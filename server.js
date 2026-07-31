@@ -47,6 +47,9 @@ const jobRoutes = require("./routes/jobRoutes");
 const agentKycRoutes =
 require("./routes/routesAgentKyc");
 const approveAgentKycRoutes = require("./routes/routesApproveAgentKycs");
+const agentAccRoutes = require("./routes/agentAccRoutes");
+
+
 // 1️⃣ Initialize express app FIRST
 const app = express();
 app.set("trust proxy", true);
@@ -139,6 +142,8 @@ app.use(
 agentKycRoutes
 );
 app.use("/api/withdraw-usdt", withdrawUSDT);
+
+app.use("/api/agentacc", agentAccRoutes);
 app.use("/api/marketer", affiliatesRoutes);
 app.use("/api/approve-agent-kyc", approveAgentKycRoutes);
 //app.use("/api", paymentCallbackRoutes);
