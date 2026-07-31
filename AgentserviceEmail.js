@@ -12,6 +12,12 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+// Dedicated Agent Frontend Domain
+const AGENT_BASE_URL =
+  process.env.AGENT_FRONTEND_URL ||
+  process.env.FRONTEND_URL ||
+  "https://shopagent.floynexapp.com";
+
 /**
  * 1. Sends initial setup link for setting 4-digit PIN and Password
  */
@@ -22,8 +28,7 @@ async function sendAgentActivationEmail({
   agentShopNumber,
   token
 }) {
-  const baseUrl = process.env.FRONTEND_URL || "https://msafeapp.com";
-  const activationLink = `${baseUrl}/agent-setup.html?token=${token}`;
+  const activationLink = `${AGENT_BASE_URL}/agent-setup.html?token=${token}`;
 
   const mailOptions = {
     from: `"FLOYNEX AGENT SERVICES" <${process.env.EMAIL_USER_AGENT}>`,
@@ -34,7 +39,7 @@ async function sendAgentActivationEmail({
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
           
           <div style="text-align:center;">
-            <img src="${baseUrl}/assets/emaillogo.png" 
+            <img src="${AGENT_BASE_URL}/assets/emaillogo.png" 
                  alt="FLOYNEX PAY Logo" 
                  style="width:130px; margin-bottom:15px;" />
           </div>
@@ -158,7 +163,6 @@ function createAgentProfilePDF(agentDetails) {
  * 2. Sends post-activation welcome email with full credentials details & PDF attachment
  */
 async function sendAgentWelcomeCredentialsEmail(agentDetails) {
-  const baseUrl = process.env.FRONTEND_URL || "https://msafeapp.com";
   const pdfBuffer = await createAgentProfilePDF(agentDetails);
 
   const mailOptions = {
@@ -170,7 +174,7 @@ async function sendAgentWelcomeCredentialsEmail(agentDetails) {
         <div style="max-width:600px; margin:auto; background:#fff; padding:30px; border-radius:8px;">
           
           <div style="text-align:center;">
-            <img src="${baseUrl}/assets/emaillogo.png" 
+            <img src="${AGENT_BASE_URL}/assets/emaillogo.png" 
                  alt="FLOYNEX PAY Logo" 
                  style="width:130px; margin-bottom:15px;" />
           </div>
@@ -207,11 +211,11 @@ async function sendAgentWelcomeCredentialsEmail(agentDetails) {
           </table>
 
           <p style="font-size:14px; color:#555; line-height:1.6;">
-            📎 <strong>Attached Document:</strong> We have attached a official PDF summary containing your account details for your store records.
+            📎 <strong>Attached Document:</strong> We have attached an official PDF summary containing your account details for your store records.
           </p>
 
           <div style="text-align:center; margin:30px 0;">
-            <a href="${baseUrl}/agent-login.html" 
+            <a href="${AGENT_BASE_URL}/agent-login.html" 
                style="display:inline-block; padding:14px 28px; background:#2e7d32; color:#ffffff; 
                       text-decoration:none; border-radius:6px; font-weight:bold; font-size:15px;">
               Login to Agent Portal
